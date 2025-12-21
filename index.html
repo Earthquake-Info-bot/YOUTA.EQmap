@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>Y地震マップv1.10.5</title>
+<title>Y地震マップv1.10.6</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
 <style>
   html {
@@ -341,19 +341,34 @@ async function loadCoordMap() {
           // ===== 震源マーカー =====
           if (hypo?.latitude != null && hypo?.longitude != null &&
               hypo.latitude !== -200 && hypo.longitude !== -200) {
-      
-            const size=90, thickness=15, lat=hypo.latitude, lon=hypo.longitude;
-            const crossIcon = L.divIcon({
-              className:'',
-              html:`<div style="width:${size}px;height:${size}px;position:relative;transform: rotate(45deg);">
-                <div style="position:absolute;top:0;left:${size/2-thickness/2}px;width:${thickness}px;height:${size}px;background:red;"></div>
-                <div style="position:absolute;left:0;top:${size/2-thickness/2}px;width:${size}px;height:${thickness}px;background:red;"></div>
-              </div>`,
-              iconSize:[size,size],
-              iconAnchor:[size/2,size/2],
-              pane:'hypocenterPane'
-            });
-      
+              
+        const size = 90;      // 3倍後サイズ
+        const stroke = 15;   // 線の太さ
+        const lat = hypo.latitude;
+        const lon = hypo.longitude;
+        
+        const crossIcon = L.divIcon({
+          className: '',
+          html: `
+            <svg width="${size}" height="${size}"
+                 viewBox="0 0 100 100"
+                 style="display:block;">
+              <line x1="50" y1="0" x2="50" y2="100"
+                    stroke="red" stroke-width="${stroke}"/>
+              <line x1="0" y1="50" x2="100" y2="50"
+                    stroke="red" stroke-width="${stroke}"/>
+            </svg>
+          `,
+          iconSize: [size, size],
+          iconAnchor: [size / 2, size / 2],
+          pane: 'hypocenterPane'
+        });
+        
+        const crossMarker = L.marker([lat, lon], {
+          icon: crossIcon,
+          interactive: false,
+          zIndexOffset: 10000
+        }).addTo(map);      
             const crossMarker = L.marker([lat,lon], {
               icon:crossIcon,
               interactive:false,
@@ -399,7 +414,7 @@ ${timeText}<br>
 震源: ${nameText}<br>
 M${magnitudeText}　深さ 約${depthText}<br>
 ${tsunami}<br>
-      <span style="font-size:0.8em;font-weight:normal;">EARTH地震マップv1.10.5</span>
+      <span style="font-size:0.8em;font-weight:normal;">EARTH地震マップv1.10.6</span>
       `;
       
           // ===== 最大震度 =====
