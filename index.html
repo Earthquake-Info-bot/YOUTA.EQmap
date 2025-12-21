@@ -2,9 +2,12 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>Y地震マップv1.10.3</title>
+<title>Y地震マップv1.10.4</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
 <style>
+  html {
+  font-size: 300%;
+  }
   #map { width: 100%; height: 100vh; }
   .intensity-marker {
     display:flex;
@@ -396,7 +399,7 @@ ${timeText}<br>
 震源: ${nameText}<br>
 M${magnitudeText}　深さ 約${depthText}<br>
 ${tsunami}<br>
-      <span style="font-size:0.8em;font-weight:normal;">EARTH地震マップv1.10.3</span>
+      <span style="font-size:0.8em;font-weight:normal;">EARTH地震マップv1.10.4</span>
       `;
       
           // ===== 最大震度 =====
@@ -534,4 +537,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 </body>
-</html
+</html>
