@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>Y地震マップv1.10.4</title>
+<title>Y地震マップv1.10.5</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
 <style>
   html {
@@ -14,11 +14,11 @@
     justify-content:center;
     align-items:center;
     border-radius:50%;
-    width:32px;
-    height:32px;
+    width:96px;
+    height:96px;
     font-weight:bold;
-    font-size:14px;
-    border:2px solid rgba(0,0,0,0.2);
+    font-size:42px;
+    border:6px solid rgba(0,0,0,0.2);
     box-sizing:border-box;
     pointer-events:none;
   }
@@ -136,8 +136,8 @@ Google Apps Script
     position: fixed;
     bottom: 20px;
     left: 20px;
-    width: 40px;
-    height: 40px;
+    width: 120px;
+    height: 120px;
     background: #0078ff;
     color: white;
     font-weight: bold;
@@ -145,7 +145,7 @@ Google Apps Script
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 22px;
+    font-size: 66px;
     cursor: pointer;
     z-index: 100000;
     box-shadow: 0 2px 6px rgba(0,0,0,0.3);
@@ -342,7 +342,7 @@ async function loadCoordMap() {
           if (hypo?.latitude != null && hypo?.longitude != null &&
               hypo.latitude !== -200 && hypo.longitude !== -200) {
       
-            const size=30, thickness=5, lat=hypo.latitude, lon=hypo.longitude;
+            const size=90, thickness=15, lat=hypo.latitude, lon=hypo.longitude;
             const crossIcon = L.divIcon({
               className:'',
               html:`<div style="width:${size}px;height:${size}px;position:relative;transform: rotate(45deg);">
@@ -399,7 +399,7 @@ ${timeText}<br>
 震源: ${nameText}<br>
 M${magnitudeText}　深さ 約${depthText}<br>
 ${tsunami}<br>
-      <span style="font-size:0.8em;font-weight:normal;">EARTH地震マップv1.10.4</span>
+      <span style="font-size:0.8em;font-weight:normal;">EARTH地震マップv1.10.5</span>
       `;
       
           // ===== 最大震度 =====
