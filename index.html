@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>Y地震マップv1.10.8</title>
+<title>Y地震マップv1.10.9</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
 <style>
   html {
@@ -385,7 +385,7 @@ async function loadCoordMap() {
           // ===== 情報表示 =====
           let nameText = (hypo?.name && hypo.name.trim() !== '') ? hypo.name : '震源地不明';
           let depthText = (hypo?.depth != null)
-            ? (hypo.depth === -1 ? '不明' : (hypo.depth === 0 ? 'ごく浅い' : hypo.depth+'km'))
+            ? (hypo.depth === -1 ? '不明' : (hypo.depth === 0 ? 'ごく浅い' : '約'+hypo.depth+'km'))
             : '不明';
           let magnitudeText = (hypo?.magnitude != null)
             ? (hypo.magnitude === -1 ? '不明' : hypo.magnitude.toFixed(1))
@@ -409,9 +409,9 @@ async function loadCoordMap() {
           hypoInfoEl.innerHTML = `▼EARTH地震情報▼<br>
 ${timeText}<br>
 震源: ${nameText}<br>
-M${magnitudeText}　深さ 約${depthText}<br>
+M${magnitudeText}　深さ ${depthText}<br>
 ${tsunami}<br>
-      <span style="font-size:0.8em;font-weight:normal;">EARTH地震マップv1.10.8</span>
+      <span style="font-size:0.8em;font-weight:normal;">EARTH地震マップv1.10.9</span>
       `;
       
           // ===== 最大震度 =====
