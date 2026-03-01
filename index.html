@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>Y地震マップv1.10.9</title>
+<title>Y地震マップv1.10.10</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
 <style>
   html {
@@ -245,8 +245,8 @@ function addIntensityMarker(lat, lon, intensity, popupText){
   const icon = L.divIcon({
     className: '',
     html: `<div class="intensity-marker" style="background:${color};color:${textColor}">${intensity}</div>`,
-    iconSize: [96,96],
-    iconAnchor: [48,48]
+    iconSize: [72,72],
+    iconAnchor: [36,36]
   });
   const marker = L.marker([lat,lon], {
     icon: icon,
