@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>Y地震マップv1.11.2</title>
+<title>Y地震マップv1.11.3</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
 <style>
   html {
@@ -286,7 +286,8 @@ async function loadCoordMap() {
   arr.forEach(p => {
     map[p.name] = {
       lat: Number(p.lat),
-      lon: Number(p.lon)
+      lon: Number(p.lon),
+      affi: p.affi
     };
   });
 
@@ -412,7 +413,7 @@ ${timeText}<br>
 震源: ${nameText}<br>
 M${magnitudeText}　深さ ${depthText}<br>
 ${tsunami}<br>
-      <span style="font-size:0.8em;font-weight:normal;">EARTH地震マップv1.10.11</span>
+      <span style="font-size:0.8em;font-weight:normal;">EARTH地震マップv1.11.3</span>
       `;
       
           // ===== 最大震度 =====
