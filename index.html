@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>Y地震マップv1.11.1</title>
+<title>Y地震マップv1.11.2</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
 <style>
   html {
@@ -314,7 +314,7 @@ async function loadCoordMap() {
           points.forEach(p => {
             const latlon = coordMap[p.addr];
             const intensity = p2pToShindo[p.scale];
-            const popupText = p.addr + "\n（" + p.pref + "）";
+            const popupText = p.pref + p.addr + "\n（" + latlon.affi + "）";
             if (latlon && intensity) {
               addIntensityMarker(latlon.lat, latlon.lon, intensity, popupText);
               latlngs.push([latlon.lat, latlon.lon]);
